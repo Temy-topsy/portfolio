@@ -395,4 +395,8 @@ footer {
   .btn {
   padding: 10px 10px;
   }
+
+  .btn-cv {
+    color: #ffffff;
+  }
 }
