@@ -101,7 +101,6 @@ header {
     rgba(77, 163, 255, 0.12),
     rgba(255, 55, 91, 0.12)
   );
-  border: 1px solid rgba(255, 255, 255, 0.04);
   font-weight: 700;
 }
 .hamburger {
@@ -391,5 +390,9 @@ footer {
   }
   .marquee__inner {
     font-size: 13px;
+  }
+
+  .btn {
+  padding: 10px 10px;
   }
 }
