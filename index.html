@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Temy Topsy Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Css -->
+   <link rel="stylesheet" href="styles.css">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+
+<body>
+  <!-- particles canvas -->
+  <canvas id="particles" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.12"></canvas>
+
+  <header style="position:relative;z-index:40">
+    <div class="container nav-inner">
+      <div class="brand">
+        <img src="/WhatsApp Image 2025-08-20 at 8.52.49 PM.jpeg" class="logo">
+        <h1>Temy Topsy</h1>
+      </div>
+
+      <div class="nav-links">
+        <a class="btn" href="#work">Proof of Work</a>
+        <a class="btn ghost" href="#contact">Contact Me</a>
+      </div>
+
+      <button class="hamburger" id="hambtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+
+      <!-- mobile menu -->
+      <nav class="mobile-menu" id="mobmenu" aria-hidden="true">
+        <a class="btn" href="#work" style="display:block;margin-bottom:8px">Proof of Work</a>
+        <a class="btn ghost" href="#contact" style="display:block">Connect</a>
+      </nav>
+    </div>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__inner" id="marquee">
+        <span>• Content Creator • Dev • Ambassador</span>
+        <span>• Content Writing • Community Mod</span>
+        <span>• Web Enthusiast • Space Host</span>
+        <span>• Content Creator• Dev • Ambassador</span>
+        <span>• Content Writer • Video Editor • Community Mod</span>
+        <span>• Web Enthusiast • Space Host</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="position:relative;z-index:20">
+    <section class="hero">
+      <div class="left">
+        <div class="badge"><span> Skills: </span> Developer • Content • Ambassador</div>
+
+        <h2 class="title"><span style="font-size: 40%; display: block; margin-bottom: 10px;">Hey There I'm a</span> Web3 content creator, community builder and Developer.</h2>
+
+        <p class="subtitle">I'm <strong>Temy Topsy</strong>. I create writing and digital content like threads, short videos and explainers. I help projects tell clearer stories and grow real communities.</p>
+
+        <div class="roles">
+          <div class="chip">Content Creator (Writing & Video)</div>
+          <div class="chip red">Growth Contributor & Ambassador</div>
+          <div class="chip">Developer</div>
+        </div>
+
+        <div class="cta">
+          <a class="btn" href="#work">View Proof of Work</a>
+          <button class="btn-cv ghost"><a class="btn ghost" href="https://drive.google.com/file/d/1GxV2YELLdtZ2-6WxMDxQEziCxVMVXncb/view?usp=sharing " target="_blank" rel="noreferrer">Download CV</a></button>
+        </div>
+      </div>
+
+      <div class="right card">
+        <div style="display:flex;gap:14px;align-items:center">
+          <!-- top-left small avatar -->
+          <img src="/WhatsApp Image 2025-08-20 at 8.52.49 PM.jpeg" alt="Temy Topsy" class="profile-pic" onerror="this.style.display='none'">
+
+          <div>
+            <div style="font-weight:800">Temy Topsy</div>
+            <div class="mono" style="margin-top:6px;color:var(--muted)">Web3 content creator • Community builder • Developer</div>
+          </div>
+        </div>
+
+<div className="mt-16"></div>
+        
+        <ul style="margin-top:14px;padding-left:18px;color:var(--muted)">
+          <li>Produced Theoriq explainer video content & 20-episode series</li>
+          <li>Part of AVAX campus tour organizing team at OOU</li>
+          <li>Speaker at AVAX meetups, community growth & onboarding</li>
+          <li>Run & moderate active Web3 community</li>
+        </ul>
+
+        <div class="orb" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- Proof of Work -->
+    <section id="work">
+      <h3 class="section-title">Proof of Work</h3>
+
+      <div class="grid" style="margin-top:12px">
+        <article class="work card reveal">
+          <div class="tag">Video • Education</div>
+          <h3>Theoriq Product Explainer</h3>
+          <p>Short, clear walkthrough video explaining the product for newbies, builders and traders.</p>
+          <!-- put tweet/video link -->
+          <a class="link" href="https://x.com/temy_topsy/status/1952676789030879405" target="_blank" rel="noreferrer">Watch on X →</a>
+        </article>
+
+        <article class="work card reveal">
+          <div class="tag">Series • Content</div>
+          <h3>Theoriq Daily Content (Ep. 1-20)</h3>
+          <p>1-20 episodes daily series covering every insights, and updates on TheoriqAI.</p>
+          <a class="link" href="https://x.com/temy_topsy/status/1946151311915020440" target="_blank" rel="noreferrer">View Episode →</a>
+        </article>
+
+        <article class="work card reveal">
+          <div class="tag">Community • Events</div>
+          <h3>AVAX Campus Tour (OOU)</h3>
+          <p>Organizing & outreach for campus activations IRL coordination & engagement.</p>
+          <a class="link" href="https://x.com/temy_topsy/status/1916230592204509569" target="_blank" rel="noreferrer">See Recap →</a>
+        </article>
+
+        <article class="work card reveal">
+          <div class="tag">Community • Events • Speaker</div>
+          <h3>AVAX Meetup Highlights</h3>
+          <p>Talk on growth, consistency, and onboarding new users to Web3.</p>
+          <a class="link" href="https://x.com/temy_topsy/status/1958180694242333067" target="_blank" rel="noreferrer">View Highlights →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section style="margin-top:28px">
+      <h3 class="section-title">Projects</h3>
+
+      <div class="projects-grid" style="margin-top:12px">
+        <div class="proj-card reveal">
+          <h4>Theoriq Video Series</h4>
+          <p>20-episode daily series and short explainers for Theoriq. Onboarding-focused educational content.</p>
+          <a class="link" href="https://x.com/temy_topsy/status/1946151311915020440" target="_blank" rel="noreferrer">Open →</a>
+        </div>
+
+        <div class="proj-card reveal">
+          <h4>AVAX Campus Tour</h4>
+          <p>Campus activations, outreach and content helped onboard students to DeFi basics.</p>
+          <a class="link" href="https://x.com/temy_topsy/status/1916230592204509569" target="_blank" rel="noreferrer">Open →</a>
+        </div>
+
+        <div class="proj-card reveal">
+          <h4>Selected Threads</h4>
+          <p>Curated threads on DeFi, testnets and project breakdowns that educate and convert.</p>
+          <a class="link" href="https://x.com/temy_topsy/highlights" target="_blank" rel="noreferrer">Open on X →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="margin-top:32px">
+      <h3 class="section-title">Connect with me</h3>
+
+      <div class="card" style="display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+        <div style="min-width:220px">
+          <p style="margin:0;color:var(--muted)">If you have a project, collab, or want to link up, Let's connect.</p>
+          <div class="socials" style="margin-top:12px">
+            <a href="https://x.com/temy_topsy" target="_blank" rel="noreferrer"><i class="fab fa-twitter"></i> X</a>
+            <a href="https://github.com/Temy-topsy" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/temy-topsy-00326b380/" target="_blank" rel="noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://discordapp.com/users/1223955122598449202" target="_blank" rel="noreferrer"><i class="fab fa-discord"></i> Discord</a>
+            <a href="https://t.me/temytopsy1" target="_blank" rel="noreferrer"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="mailto:temy.topsy12@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+          </div>
+        </div>
+
+        <div style="margin-left:auto">
+          <a class="btn" href="mailto:temy.topsy12@gmail.com?subject=Collab%20with%20Temy%20Topsy" rel="noreferrer">Connect via Email →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="position:relative;z-index:20">
+    <div class="container">
+      <div class="card" style="text-align:center;background:transparent;border:none;padding:18px">
+        <small>Copyright © <span id="year"></span> by Temy Topsy | All Rights Reserved</small>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // YEAR
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Marquee duplication
+    const mq = document.getElementById('marquee');
+    mq.innerHTML = mq.innerHTML + mq.innerHTML;
+
+    // Mobile menu toggle
+    const hambtn = document.getElementById('hambtn');
+    const mobmenu = document.getElementById('mobmenu');
+    hambtn && hambtn.addEventListener('click', ()=>{
+      if(mobmenu.style.display === 'block') mobmenu.style.display = 'none';
+      else mobmenu.style.display = 'block';
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('show');
+      });
+    }, {threshold:0.15});
+    reveals.forEach(r=>io.observe(r));
+
+    // particles (lightweight)
+    (function(){
+      const canvas = document.getElementById('particles');
+      if(!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = innerWidth;
+      let h = canvas.height = innerHeight;
+      const pts = [];
+      const qty = Math.max(30, Math.floor((w*h)/140000));
+      for(let i=0;i<qty;i++){
+        pts.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.2+0.4,vx:(Math.random()-0.5)/2,vy:(Math.random()-0.5)/2});
+      }
+      function loop(){
+        ctx.clearRect(0,0,w,h);
+        for(const p of pts){
+          p.x += p.vx; p.y += p.vy;
+          if(p.x<0) p.x = w; if(p.x>w) p.x = 0;
+          if(p.y<0) p.y = h; if(p.y>h) p.y = 0;
+          ctx.beginPath();
+          ctx.fillStyle = 'rgba(255,255,255,0.05)';
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fill();
+        }
+        requestAnimationFrame(loop);
+      }
+      loop();
+      addEventListener('resize', ()=>{ w=canvas.width=innerWidth; h=canvas.height=innerHeight; });
+    })();
+  </script>
+</body>
+</html>
