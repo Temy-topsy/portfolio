@@ -10,7 +10,7 @@
 
   <!-- Css -->
    <link rel="stylesheet" href="styles.css">
-
+    
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -26,13 +26,14 @@
   <header style="position:relative;z-index:40">
     <div class="container nav-inner">
       <div class="brand">
-        <img src="/WhatsApp Image 2025-08-20 at 8.52.49 PM.jpeg" class="logo">
+        <img src="/WhatsApp Image 2025-08-20 at 8.52.49 PM.jpeg" class="logo" alt="TT Logo">
         <h1>Temy Topsy</h1>
       </div>
 
       <div class="nav-links">
         <a class="btn" href="#work">Proof of Work</a>
-        <a class="btn ghost" href="#contact">Contact Me</a>
+        <a class="btn ghost" href="#projects">Projects</a>
+        <a class="btn" href="#contact">Contact Me</a>
       </div>
 
       <button class="hamburger" id="hambtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
@@ -40,7 +41,8 @@
       <!-- mobile menu -->
       <nav class="mobile-menu" id="mobmenu" aria-hidden="true">
         <a class="btn" href="#work" style="display:block;margin-bottom:8px">Proof of Work</a>
-        <a class="btn ghost" href="#contact" style="display:block">Connect</a>
+        <a class="btn ghost" href="#projects" style="display:block">Projects</a>
+        <a class="btn ghost" href="#contact" style="display:block">Let's Connect</a>
       </nav>
     </div>
 
@@ -71,9 +73,12 @@
           <div class="chip">Developer</div>
         </div>
 
+        <!-- UPDATED: safe typing line (fixed width, 3 words) -->
+        <p class="typing-line">Also a: <span class="typed-holder"><span id="typed" class="typed"></span></span></p>
+
         <div class="cta">
           <a class="btn" href="#work">View Proof of Work</a>
-          <button class="btn-cv ghost"><a class="btn ghost" href="https://drive.google.com/file/d/1GxV2YELLdtZ2-6WxMDxQEziCxVMVXncb/view?usp=sharing " target="_blank" rel="noreferrer">Download CV</a></button>
+          <button class="btn-cv ghost"><a style="font-family: inter;" class="btn ghost" href="https://drive.google.com/file/d/1GxV2YELLdtZ2-6WxMDxQEziCxVMVXncb/view?usp=sharing " target="_blank" rel="noreferrer">Download CV</a></button>
         </div>
       </div>
 
@@ -88,7 +93,8 @@
           </div>
         </div>
 
-<div className="mt-16"></div>
+        <!-- UPDATED: fixed invalid attribute -->
+        <div style="margin-top:16px"></div>
         
         <ul style="margin-top:14px;padding-left:18px;color:var(--muted)">
           <li>Produced Theoriq explainer video content & 20-episode series</li>
@@ -106,30 +112,53 @@
       <h3 class="section-title">Proof of Work</h3>
 
       <div class="grid" style="margin-top:12px">
+        <!-- UPDATED: Card now has clickable image (no crop) -->
         <article class="work card reveal">
-          <div class="tag">Video • Education</div>
+          <div class="work-media">
+            <a href="https://x.com/temy_topsy/status/1952676789030879405" target="_blank" rel="noreferrer" aria-label="Open Theoriq Product Explainer on X">
+              <img class="work-thumb" src="/Theoriq-video.png" alt="Theoriq Product Explainer graphic">
+            </a>
+          </div>
+          <div class="tag" id="tag1">Video • Education</div>
           <h3>Theoriq Product Explainer</h3>
           <p>Short, clear walkthrough video explaining the product for newbies, builders and traders.</p>
-          <!-- put tweet/video link -->
           <a class="link" href="https://x.com/temy_topsy/status/1952676789030879405" target="_blank" rel="noreferrer">Watch on X →</a>
         </article>
 
+        <!-- UPDATED: square image won't be cropped -->
         <article class="work card reveal">
+          <div class="work-media">
+            <a href="https://x.com/temy_topsy/status/1946151311915020440" target="_blank" rel="noreferrer" aria-label="Open Theoriq Daily Content on X">
+              <img class="work-thumb" src="/Theoriq-eps.jpg" alt="Theoriq daily content series graphic">
+            </a>
+          </div>
           <div class="tag">Series • Content</div>
           <h3>Theoriq Daily Content (Ep. 1-20)</h3>
           <p>1-20 episodes daily series covering every insights, and updates on TheoriqAI.</p>
           <a class="link" href="https://x.com/temy_topsy/status/1946151311915020440" target="_blank" rel="noreferrer">View Episode →</a>
         </article>
 
+        <!-- UPDATED: 2048x2048 shown fully -->
         <article class="work card reveal">
+          <div class="work-media">
+            <a href="https://x.com/temy_topsy/status/1916230592204509569" target="_blank" rel="noreferrer" aria-label="Open AVAX Campus Tour recap">
+              <img class="work-thumb" src="/avax-team-member.jpg" alt="AVAX Campus Tour OOU graphic">
+            </a>
+          </div>
           <div class="tag">Community • Events</div>
           <h3>AVAX Campus Tour (OOU)</h3>
           <p>Organizing & outreach for campus activations IRL coordination & engagement.</p>
           <a class="link" href="https://x.com/temy_topsy/status/1916230592204509569" target="_blank" rel="noreferrer">See Recap →</a>
         </article>
 
+        <!-- UPDATED: 2400x1350 wide stays clean -->
         <article class="work card reveal">
-          <div class="tag">Community • Events • Speaker</div>
+          <div class="work-media">
+            <a href="https://x.com/temy_topsy/status/1958180694242333067" target="_blank" rel="noreferrer" aria-label="Open AVAX Meetup highlights">
+              <img class="work-thumb" src="/Avax-meetup.jpg" alt="AVAX Meetup Highlights graphic">
+            </a>
+          </div>
+          <div class="tag" id="tag4">Community • Events • Speaker</div>
           <h3>AVAX Meetup Highlights</h3>
           <p>Talk on growth, consistency, and onboarding new users to Web3.</p>
           <a class="link" href="https://x.com/temy_topsy/status/1958180694242333067" target="_blank" rel="noreferrer">View Highlights →</a>
@@ -138,7 +167,7 @@
     </section>
 
     <!-- Projects -->
-    <section style="margin-top:28px">
+    <section id="projects" style="margin-top:28px">
       <h3 class="section-title">Projects</h3>
 
       <div class="projects-grid" style="margin-top:12px">
@@ -246,6 +275,39 @@
       }
       loop();
       addEventListener('resize', ()=>{ w=canvas.width=innerWidth; h=canvas.height=innerHeight; });
+    })();
+
+    /* Improved: tiny, safe typing effect (3 words, fixed width) */
+    (function(){
+      const el = document.getElementById('typed');
+      if(!el) return;
+      const words = ['Creator','Developer','Gamer', 'Ambassador', "Speaker", "Video Editor"];
+      let wi = 1, ci = 0, typing = true;
+
+      function typeTick() {
+        const full = words[wi];
+        if (typing) {
+          ci++;
+          el.textContent = full.slice(0, ci);
+          if (ci >= full.length) {
+            typing = false;
+            setTimeout(typeTick, 800); // pause before deleting
+          } else {
+            setTimeout(typeTick, 200); // typing speed
+          }
+        } else {
+          ci--;
+          el.textContent = full.slice(0, ci);
+          if (ci <= 0) {
+            typing = true;
+            wi = (wi + 1) % words.length;
+            setTimeout(typeTick, 600); // pause before next word starts typing
+          } else {
+            setTimeout(typeTick, 100); // deleting speed
+          }
+        }
+      }
+      typeTick();
     })();
   </script>
 </body>
