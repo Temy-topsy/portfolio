@@ -9,6 +9,7 @@
   --ring: 0 0 0 2px rgba(77, 163, 255, 0.12), 0 0 35px rgba(77, 163, 255, 0.06);
   --radius: 18px;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -224,6 +225,17 @@ nav.mobile-menu {
   overflow: hidden;
 }
 
+/* UPDATED: subtle float + glow for PFP to give more lifeeeee */
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.08); /* UPDATED */
+  box-shadow: 0 8px 24px rgba(77, 163, 255, 0.12); /* UPDATED */
+  animation: float 6s ease-in-out infinite; /* UPDATED */
+}
+
 .orb {
   position: absolute;
   right: -30px;
@@ -272,6 +284,15 @@ section {
   font-size: 12px;
   color: var(--muted);
 }
+
+#tag1 {
+  padding-top: 50%;
+}
+
+#tag4 {
+  padding-top: 43%;
+}
+
 .work h3 {
   margin: 8px 0 10px;
   font-size: 18px;
@@ -287,6 +308,37 @@ section {
   margin-top: 10px;
   color: var(--accent);
   font-weight: 700;
+}
+
+/* UPDATED: image media block for Proof of Work (clickable) */
+.work-media {
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  margin-bottom: 10px;
+  transition: transform 0.5s ease;
+  transform: scale(1.01);
+  filter: saturate(1.08);
+}
+
+/* here */
+
+.work-media:hover {
+  transform: translateY(4px);
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.7);
+}
+.work-media a {
+  display: block;
+  line-height: 0;
+}
+.work-thumb {
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: auto;
+  object-fit: contain;
+  background: #0e1218;
 }
 
 /* projects */
@@ -330,18 +382,27 @@ footer {
   color: var(--muted);
 }
 
-/* small helpers */
-.profile-pic {
-  width: 120px;
-  height: 120px;
-  border-radius: 16px;
-  object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.04);
-}
-.mono {
-  font-family: "JetBrains Mono", monospace;
+/* UPDATED: small typing effect */
+.typing-line {
+  margin-top: 8px;
   color: var(--muted);
+  font-family: "JetBrains Mono", monospace;
   font-size: 13px;
+}
+.typed-holder {
+  display: inline-block;
+  min-width: 9ch; /* fixed width to prevent layout shift */
+  white-space: nowrap;
+}
+.typed {
+  border-right: 2px solid var(--accent);
+  padding-right: 4px;
+  animation: caret 0.8s steps(1) infinite;
+}
+@keyframes caret {
+  50% {
+    border-color: transparent;
+  }
 }
 
 /* reveal */
@@ -383,6 +444,35 @@ footer {
     padding: 10px;
     display: none;
   }
+
+  #tag1 {
+    padding-top: 0;
+  }
+
+  #tag4 {
+    padding-top: 0;
+  }
+
+  /* UPDATED: show PFP/card FIRST on mobile */
+  .right {
+    grid-row: 1;
+  } /* card with pfp first */
+  .left {
+    grid-row: 2;
+  }
+
+  /* UPDATED: stack Proof of Work cards vertically on mobile */
+  .work {
+    grid-column: span 12;
+  }
+
+  /* UPDATED: a bit more breathing room on mobile */
+  section {
+    padding: 44px 0;
+  }
+  .container {
+    padding: 22px 20px;
+  }
 }
 @media (max-width: 560px) {
   .projects-grid {
@@ -393,7 +483,7 @@ footer {
   }
 
   .btn {
-  padding: 10px 10px;
+    padding: 10px 10px;
   }
 
   .btn-cv {
