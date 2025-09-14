@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Css -->
-   <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="styles3.css">
     
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -17,6 +17,251 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
+
+  <style>
+    /* THEME TOGGLE */
+    :root {
+      --theme-toggle-width: 56px;
+      --theme-toggle-height: 32px;
+      --toggle-ball-size: 24px;
+      --light-card-bg: #f8fafc;
+      --light-card-border: rgba(11,18,32,0.06);
+      --light-card-shadow: rgba(11,18,32,0.04);
+      --light-btn-bg: #0b1220;
+      --light-btn-text: #ffffff;
+      --light-ghost-border: rgba(11,18,32,0.08);
+      --light-link: #1d4ed8;
+    }
+
+    /* base themes */
+    body.theme-light {
+      background: #ffffff;
+      color: #111827;
+      --muted: #374151;
+      --link: var(--light-link);
+      --chip-text: #111827;
+      --tag-text: #111827;
+    }
+    body.theme-dark {
+      background: #0b0f17;
+      color: #e6eef8;
+      --muted: #9ca3af;
+      --link: #93c5fd;
+      --chip-text: #e6eef8;
+      --tag-text: #e6eef8;
+    }
+
+    /* Smooth transitions */
+    body, .card, .btn, .ghost, .marquee, .work-thumb {
+      transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+    }
+
+    /* Make all text darker in light mode so nothing is hard to read */
+    body.theme-light * {
+      color: #0b1220 !important;
+    }
+    /* but exclude things that should not be recolored */
+    body.theme-light img, body.theme-light canvas, body.theme-light svg {
+      color: initial !important;
+      filter: none !important;
+    }
+
+    /* Toggle layout inside header */
+    .header-theme-toggle {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 60;
+    }
+
+    /* Toggle component */
+    .theme-toggle {
+      width: var(--theme-toggle-width);
+      height: var(--theme-toggle-height);
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(245,245,245,0.9));
+      display: inline-flex;
+      align-items: center;
+      padding: 4px;
+      gap: 6px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.08);
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+    }
+    .theme-toggle .icon {
+      width: 18px;
+      height: 18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 12px;
+      color: #f59e0b;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+    .theme-toggle .icon.moon { color: #111827; opacity: 0.5; }
+
+    /* Ball */
+    .theme-toggle .ball {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: var(--toggle-ball-size);
+      height: var(--toggle-ball-size);
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.12);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 12px;
+      transition: transform 320ms cubic-bezier(.2,.9,.3,1), background 320ms ease, color 320ms ease;
+    }
+
+    /* Dark mode styles for toggle (unchanged behavior) */
+    body.theme-dark .theme-toggle {
+      background: linear-gradient(180deg, rgba(30,41,59,0.9), rgba(17,24,39,0.95));
+      box-shadow: 0 6px 18px rgba(2,6,23,0.32);
+    }
+    body.theme-dark .theme-toggle .icon.moon { color: #cbd5e1; opacity: 0.95; }
+    body.theme-dark .theme-toggle .icon.sun { color: #fbbf24; opacity: 0.45; }
+    body.theme-dark .theme-toggle .ball {
+      transform: translateX(calc(var(--theme-toggle-width) - var(--toggle-ball-size) - 8px));
+      background: linear-gradient(180deg, #0f1724, #091024);
+      color: #f8fafc;
+    }
+
+    /* Light mode icons and ball */
+    body.theme-light .theme-toggle .icon.sun { color: #f59e0b !important; opacity: 0.95 !important; }
+    body.theme-light .theme-toggle .icon.moon { color: #374151 !important; opacity: 0.45 !important; }
+    body.theme-light .theme-toggle .ball { background: #ffffff !important; color: #0b1220 !important; transform: translateX(0) !important; }
+
+    /* Small screens adjustments */
+    @media (max-width: 520px) {
+      .header-theme-toggle { top: 10px; right: 8px; }
+      .theme-toggle { width: 48px; height: 28px; padding: 3px; }
+      .theme-toggle .ball { width: 22px; height: 22px; top: 3px; left: 3px; }
+    }
+
+    /* ====== Light mode specific refinements for cards, projects, buttons ====== */
+    /* Card backgrounds */
+    body.theme-light .card,
+    body.theme-light .work.card,
+    body.theme-light .proj-card,
+    body.theme-light .projects-grid .proj-card,
+    body.theme-light .right.card {
+      background: var(--light-card-bg) !important;
+      border: 1px solid var(--light-card-border) !important;
+      box-shadow: 0 8px 24px var(--light-card-shadow) !important;
+      color: #0b1220 !important;
+    }
+
+    /* Work card inner link thumbnails keep natural look */
+    body.theme-light .work-thumb {
+      background: transparent !important;
+      color: inherit !important;
+    }
+
+    /* Buttons */
+    body.theme-light .btn {
+      background: var(--light-btn-bg) !important;
+      color: var(--light-btn-text) !important;
+      border: none !important;
+      box-shadow: 0 8px 20px rgba(11,18,32,0.08) !important;
+      padding: 10px 14px !important;
+      border-radius: 10px !important;
+      text-decoration: none !important;
+      display: inline-block;
+    }
+    body.theme-light .btn.ghost,
+    body.theme-light a.btn.ghost {
+      background: transparent !important;
+      color: #0b1220 !important;
+      border: 1px solid var(--light-ghost-border) !important;
+      box-shadow: none !important;
+      padding: 9px 12px !important;
+      border-radius: 10px !important;
+    }
+
+    /* Ensure CV button anchor inside button-cv keeps correct colors */
+    body.theme-light .btn-cv .btn.ghost a,
+    body.theme-light .btn-cv .btn.ghost {
+      color: #0b1220 !important;
+    }
+
+    /* Links */
+    body.theme-light a.link {
+      color: var(--light-link) !important;
+      text-decoration: none !important;
+      font-weight: 600 !important;
+    }
+    body.theme-light a.link:hover {
+      text-decoration: underline !important;
+    }
+
+    /* Tags and chips */
+    body.theme-light .tag {
+      display: inline-block;
+      background: rgba(11,18,32,0.03) !important;
+      color: #0b1220 !important;
+      border-radius: 8px !important;
+      padding: 6px 8px !important;
+      font-weight: 600 !important;
+      font-size: 13px !important;
+    }
+    body.theme-light .chip {
+      background: rgba(11,18,32,0.03) !important;
+      color: #0b1220 !important;
+      border-radius: 999px !important;
+      padding: 6px 10px !important;
+      font-weight: 600 !important;
+      display: inline-block;
+    }
+
+    /* Project cards specifically */
+    body.theme-light .proj-card {
+      background: #ffffff !important;
+      border: 1px solid var(--light-card-border) !important;
+      padding: 16px !important;
+      border-radius: 12px !important;
+      color: #0b1220 !important;
+    }
+    body.theme-light .proj-card h4 {
+      margin-top: 0 !important;
+      color: #0b1220 !important;
+      font-weight: 700 !important;
+    }
+    body.theme-light .proj-card p {
+      color: #263238 !important;
+      margin-bottom: 8px !important;
+    }
+
+    /* Muted text */
+    body.theme-light .mono,
+    body.theme-light .subtitle,
+    body.theme-light small,
+    body.theme-light .muted,
+    body.theme-light [style*=\"--muted\"] {
+      color: var(--muted) !important;
+    }
+
+    /* Footer small text */
+    body.theme-light footer small {
+      color: #475569 !important;
+    }
+
+    /* Ensure hamburger icon visible in light mode */
+    body.theme-light .hamburger i {
+      color: #0b1220 !important;
+    }
+
+    /* keep forced color for social icons readable */
+    body.theme-light .socials a i {
+      color: #0b1220 !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -34,6 +279,15 @@
         <a class="btn" href="#work">Proof of Work</a>
         <a class="btn ghost" href="#projects">Projects</a>
         <a class="btn" href="#contact">Contact Me</a>
+      </div>
+
+      <!-- Theme toggle (added) -->
+      <div class="header-theme-toggle" aria-hidden="false">
+        <div id="themeToggle" class="theme-toggle" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle color theme">
+          <span class="icon sun" aria-hidden="true"><i class="fas fa-sun"></i></span>
+          <span class="icon moon" aria-hidden="true"><i class="fas fa-moon"></i></span>
+          <span class="ball" aria-hidden="true"></span>
+        </div>
       </div>
 
       <button class="hamburger" id="hambtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
@@ -61,14 +315,14 @@
   <main class="container" style="position:relative;z-index:20">
     <section class="hero">
       <div class="left">
-        <div class="badge"><span> Skills: </span> Developer • Content • Ambassador</div>
+        <div class="badge"><span> Skills: </span> Developer • Content Creator • Ambassador</div>
 
-        <h2 class="title"><span style="font-size: 40%; display: block; margin-bottom: 10px;">Hey There I'm a</span> Web3 content creator, community builder and Developer.</h2>
+        <h2 class="title"><span style="font-size: 40%; display: block; margin-bottom: 10px;">Hey There I'm a</span> Content creator, community builder and Developer.</h2>
 
-        <p class="subtitle">I'm <strong>Temy Topsy</strong>. I create writing and digital content like threads, short videos and explainers. I help projects tell clearer stories and grow real communities.</p>
+        <p class="subtitle"><strong>Temy Topsy</strong> is the name and I curate writing and digital contents. I help projects tell clearer stories and grow real communities.</p>
 
         <div class="roles">
-          <div class="chip">Content Creator (Writing & Video)</div>
+          <div class="chip">Content Creator (Writer & Visuals)</div>
           <div class="chip red">Growth Contributor & Ambassador</div>
           <div class="chip">Developer</div>
         </div>
@@ -89,7 +343,7 @@
 
           <div>
             <div style="font-weight:800">Temy Topsy</div>
-            <div class="mono" style="margin-top:6px;color:var(--muted)">Web3 content creator <br>Community builder <br>Developer</div>
+            <div class="mono" style="margin-top:6px;color:var(--muted)">Web3 content creator • Community builder • Developer</div>
           </div>
         </div>
 
@@ -97,10 +351,9 @@
         <div style="margin-top:16px"></div>
         
         <ul style="margin-top:14px;padding-left:18px;color:var(--muted)">
-          <li>Produced Theoriq explainer video content & 20-episode series</li>
-          <li>Part of AVAX campus tour organizing team at OOU</li>
-          <li>Speaker at AVAX meetups, community growth & onboarding</li>
-          <li>Run & moderate active Web3 community</li>
+          <li>Produced Theoriq explainer video content & 20+ episode series</li>
+          <li>Lead & Founder of OOU Web3 Community</li>
+          <li>Speaker & organizing team at AVAX community meetups, community growth & onboarding</li>
         </ul>
 
         <div class="orb" aria-hidden="true"></div>
@@ -125,7 +378,6 @@
           <a class="link" href="https://x.com/temy_topsy/status/1952676789030879405" target="_blank" rel="noreferrer">Watch on X →</a>
         </article>
 
-        <!-- UPDATED: square image won't be cropped -->
         <article class="work card reveal">
           <div class="work-media">
             <a href="https://x.com/temy_topsy/status/1946151311915020440" target="_blank" rel="noreferrer" aria-label="Open Theoriq Daily Content on X">
@@ -138,7 +390,6 @@
           <a class="link" href="https://x.com/temy_topsy/status/1946151311915020440" target="_blank" rel="noreferrer">View Episode →</a>
         </article>
 
-        <!-- UPDATED: 2048x2048 shown fully -->
         <article class="work card reveal">
           <div class="work-media">
             <a href="https://x.com/temy_topsy/status/1916230592204509569" target="_blank" rel="noreferrer" aria-label="Open AVAX Campus Tour recap">
@@ -151,7 +402,6 @@
           <a class="link" href="https://x.com/temy_topsy/status/1916230592204509569" target="_blank" rel="noreferrer">See Recap →</a>
         </article>
 
-        <!-- UPDATED: 2400x1350 wide stays clean -->
         <article class="work card reveal">
           <div class="work-media">
             <a href="https://x.com/temy_topsy/status/1958180694242333067" target="_blank" rel="noreferrer" aria-label="Open AVAX Meetup highlights">
@@ -160,7 +410,7 @@
           </div>
           <div class="tag" id="tag4">Community • Events • Speaker</div>
           <h3>AVAX Meetup Highlights</h3>
-          <p>Spoke on growth, Web3 gaming, P2E and onboarded new users to Web3 AVAX Chain.</p>
+          <p>Talk on growth, consistency, and onboarding new users to Web3.</p>
           <a class="link" href="https://x.com/temy_topsy/status/1958180694242333067" target="_blank" rel="noreferrer">View Highlights →</a>
         </article>
       </div>
@@ -173,7 +423,7 @@
       <div class="projects-grid" style="margin-top:12px">
         <div class="proj-card reveal">
           <h4>Theoriq Video Series</h4>
-          <p>20-episode daily series and short explainers for Theoriq. Onboarding-focused educational content.</p>
+          <p>20-episode daily series and short explainers for TheoriqAI. Onboarding-focused educational content.</p>
           <a class="link" href="https://x.com/temy_topsy/status/1946151311915020440" target="_blank" rel="noreferrer">Open →</a>
         </div>
 
@@ -199,17 +449,13 @@
         <div style="min-width:220px">
           <p style="margin:0;color:var(--muted)">If you have a project, collab, or want to link up, Let's connect.</p>
           <div class="socials" style="margin-top:12px">
-            <a href="https://x.com/temy_topsy" target="_blank" rel="noreferrer"><i class="fab fa-twitter"></i> X</a>
-            <a href="https://github.com/Temy-topsy" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://www.linkedin.com/in/temy-topsy-00326b380/" target="_blank" rel="noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://discordapp.com/users/1223955122598449202" target="_blank" rel="noreferrer"><i class="fab fa-discord"></i> Discord</a>
-            <a href="https://t.me/temytopsy1" target="_blank" rel="noreferrer"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="mailto:temy.topsy12@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://x.com/temy_topsy" target="_blank" rel="noreferrer"><i class="fab fa-x-twitter"></i> </a>
+            <a href="https://github.com/Temy-topsy" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> </a>
+            <a href="https://www.linkedin.com/in/temy-topsy-00326b380/" target="_blank" rel="noreferrer"><i class="fab fa-linkedin"></i> </a>
+            <a href="https://discordapp.com/users/1223955122598449202" target="_blank" rel="noreferrer"><i class="fab fa-discord"></i> </a>
+            <a href="https://t.me/temytopsy1" target="_blank" rel="noreferrer"><i class="fab fa-telegram"></i></a>
+            <a href="mailto:temy.topsy12@gmail.com"><i class="fas fa-envelope"></i></a>
           </div>
-        </div>
-
-        <div style="margin-left:auto">
-          <a class="btn" href="mailto:temy.topsy12@gmail.com?subject=Collab%20with%20Temy%20Topsy" rel="noreferrer">Connect via Email →</a>
         </div>
       </div>
     </section>
@@ -281,7 +527,7 @@
     (function(){
       const el = document.getElementById('typed');
       if(!el) return;
-      const words = ['Creator','Developer','Gamer', 'Ambassador', "Speaker", "Video Editor"];
+      const words = ['Creator','Developer','Gamer', 'Ambassador', "Speaker", "Video Editor", 'Graphics Designer' ];
       let wi = 1, ci = 0, typing = true;
 
       function typeTick() {
@@ -309,8 +555,42 @@
       }
       typeTick();
     })();
+
+    // THEME TOGGLE SCRIPT (added)
+    (function(){
+      const toggle = document.getElementById('themeToggle');
+      if(!toggle) return;
+      const bodyEl = document.body;
+      const saved = localStorage.getItem('theme'); // 'light' or 'dark'
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initial = saved ? saved : (prefersDark ? 'dark' : 'light');
+
+      // apply initial theme
+      bodyEl.classList.add('theme-' + initial);
+      toggle.setAttribute('aria-checked', initial === 'dark' ? 'true' : 'false');
+
+      function applyTheme(theme) {
+        bodyEl.classList.remove('theme-light','theme-dark');
+        bodyEl.classList.add('theme-' + theme);
+        toggle.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
+        localStorage.setItem('theme', theme);
+      }
+
+      // click handler
+      toggle.addEventListener('click', function(){
+        const isDark = bodyEl.classList.contains('theme-dark');
+        applyTheme(isDark ? 'light' : 'dark');
+      });
+
+      // keyboard accessibility
+      toggle.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const isDark = bodyEl.classList.contains('theme-dark');
+          applyTheme(isDark ? 'light' : 'dark');
+        }
+      });
+    })();
   </script>
 </body>
 </html>
-
-
