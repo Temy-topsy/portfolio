@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Css -->
-   <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="styles3.css">
     
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -19,12 +19,12 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <style>
-    /* THEME TOGGLE */
+    /* THEME TOGGLE + LIGHT MODE TEXT FIXES + CARD & BUTTON REFINEMENTS */
     :root {
       --theme-toggle-width: 56px;
       --theme-toggle-height: 32px;
       --toggle-ball-size: 24px;
-      --light-card-bg: #f8fafc;
+      --light-card-bg: #f8fafc; /* subtle off-white for cards in light mode */
       --light-card-border: rgba(11,18,32,0.06);
       --light-card-shadow: rgba(11,18,32,0.04);
       --light-btn-bg: #0b1220;
@@ -37,7 +37,7 @@
     body.theme-light {
       background: #ffffff;
       color: #111827;
-      --muted: #374151;
+      --muted: #374151; /* dark gray for visibility */
       --link: var(--light-link);
       --chip-text: #111827;
       --tag-text: #111827;
@@ -45,7 +45,7 @@
     body.theme-dark {
       background: #0b0f17;
       color: #e6eef8;
-      --muted: #9ca3af;
+      --muted: #9ca3af; /* light gray */
       --link: #93c5fd;
       --chip-text: #e6eef8;
       --tag-text: #e6eef8;
@@ -271,7 +271,7 @@
   <header style="position:relative;z-index:40">
     <div class="container nav-inner">
       <div class="brand">
-        <img src="/WhatsApp Image 2025-08-20 at 8.52.49 PM.jpeg" class="logo" alt="TT Logo">
+        <img src="/Topsy-pfp.jpg" class="logo" alt="TT Logo">
         <h1>Temy Topsy</h1>
       </div>
 
@@ -339,7 +339,7 @@
       <div class="right card">
         <div style="display:flex;gap:14px;align-items:center">
           <!-- top-left small avatar -->
-          <img src="/WhatsApp Image 2025-08-20 at 8.52.49 PM.jpeg" alt="Temy Topsy" class="profile-pic" onerror="this.style.display='none'">
+          <img src="/Topsy-pfp.jpg" alt="Temy Topsy" class="profile-pic" onerror="this.style.display='none'">
 
           <div>
             <div style="font-weight:800">Temy Topsy</div>
@@ -594,4 +594,3 @@
   </script>
 </body>
 </html>
-
